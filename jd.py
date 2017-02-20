@@ -24,7 +24,6 @@ class JD(object):
 			"port": 3306,
 			"user": "root",
 			"passwd": "root",
-			# "passwd": "435fsdfdJKHJGHHGsa23xzH",
 			"db": "jd"
 		}
 		self.db = self.init_mysql()
