@@ -1,0 +1,71 @@
+$def with (price_info_dict)
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" name="价格走势">
+        <title></title>
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <style>
+            #container {
+                min-width: 600px;
+                max-width: 800px;
+                height: 400px;
+                margin: 0 auto
+          }
+        </style>
+    </head>
+    <body>
+        <form>
+<div style="border: solid 1px #E6CA98; margin-bottom: 10px; overflow: hidden;width: 600px;margin: 0 auto;">
+                <div style="background-color: #FFF7E6; border-bottom: solid 1px #E6CA98; padding: 6px;
+                    height: 20px; text-align: left; overflow: hidden;">
+                    <div style="float: left; margin-top: 2px;">
+                        京东商品网址</div>
+                </div>
+                <div style="margin-left:20px; margin-top:10px;">
+
+              </div>
+              <div style="line-height: 30px;height:30px; text-align:left;">
+              <input name="item_id" id="item_id" type="text" class="wizardTxtField" onblur="if(this.value=='')this.value='请输入商品的网页地址，如：http://item.jd.com/548994.html';this.style.color='#A9A9A9'" onfocus="this.style.color='#A9A9A9'" onclick="if(this.value=='请输入商品的网页地址，如：http://item.jd.com/548994.html')this.value='';this.style.color='#000';" onkeydown="if(this.value=='请输入商品的网页地址，如：http://item.jd.com/548994.html')this.value='';this.style.color='#000';" value="" style="color: rgb(169, 169, 169) ;width: 900px; height:30px;">
+               </div>
+              <div style="line-height: 30px;height:30px; text-align:left; margin:10px 0px 20px 0px;">
+                            <input type="submit" name="" value="商品历史价格查询" id="" class="btn">
+                            <span style=" color:#999; margin-left:20px;">有时查询会比较慢，请耐心等待</span>
+                  </div> </div>
+            </div>
+        </form>
+
+        <div id="container" style="margin-top: 20px;"></div>
+    </body>
+</html>
+
+<script>
+Highcharts.chart('container', {
+
+    title: {
+        text: '最近商品价格'
+    },
+
+    subtitle: {
+        text: ''
+    },
+    xAxis: {
+        categories: $:price_info_dict["date"]
+    },
+    yAxis: {
+        title: {
+            text: 'Price Of Item'
+        }
+    },
+    legend: {
+        layout: 'horizontal',
+        align: 'center',
+    },
+    series: [{
+        name: 'price',
+        data: $:price_info_dict["price"]
+    }]
+});
+
+</script>
